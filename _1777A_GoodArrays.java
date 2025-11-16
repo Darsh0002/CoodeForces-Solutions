@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class _1777A_GoodArrays {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int tc = sc.nextInt();
+
+        while (tc-- > 0) {
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+
+            for (int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+            }
+
+            int count = 0;
+            int parity = arr[0] % 2;
+            for (int i = 1; i < n; i++) {
+                int curr = arr[i] % 2;
+                if (curr == parity) count++;
+                else parity = curr;
+            }
+            System.out.println(count);
+        }
+    }
+}
