@@ -16,20 +16,19 @@ public class _279B_Books {
     }
 
     private static int maxBooks(int[] arr, int n, int t) {
-        int ans = 0;
-        for (int i = 0; i < n; i++) {
-            int temp = 0;
-            int currTime = 0;
-            for (int j = i; j < n; j++) {
-                if (currTime + arr[j] <= t) {
-                    currTime += arr[j];
-                    temp++;
-                } else {
-                    break;
-                }
+        int maxlen = 0;
+        int l = 0, r = 0, sum = 0;
+        while (r < n) {
+            sum += arr[r];
+
+            while (sum > t) {
+                sum -= arr[l];
+                l++;
             }
-            ans = Math.max(temp, ans);
+
+            maxlen = Math.max(maxlen, r - l + 1);
+            r++;
         }
-        return ans;
+        return maxlen;
     }
 }
